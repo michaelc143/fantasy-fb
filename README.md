@@ -22,3 +22,7 @@ pip install -r requirements.txt
 ```
 
 You must also set your leagueid, epsn2, and swid in a similar .env file. The python file pulls from the .env fil to find league specific data.
+
+To find the espn2 and swid, find more info here: [link](https://github.com/cwendt94/espn-api/discussions/150)
+
+FF Library Documentation: [link](https://github.com/cwendt94/espn-api/wiki/Football-Intro)
