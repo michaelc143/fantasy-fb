@@ -41,9 +41,7 @@ def create_teams_df(league):
     teams = pd.DataFrame()
     teams['Team_Names'] = team_names
     teams['Division'] = division_names
-    teams['Roster'] = rosters
-    teams['Best_Player'] = best_players
-    teams['Schedule'] = schedules
+    # teams['Schedule'] = schedules
     teams['Ranking'] = standings
     teams = teams.sort_values(by='Ranking')
     return teams
