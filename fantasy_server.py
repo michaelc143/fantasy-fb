@@ -1,3 +1,7 @@
+'''
+Server python file that uses flask to connect to the fantasy_tracker app
+and build an api out of the functions built in fantasy_tracker.py
+'''
 from flask import Flask, request, jsonify
 from fantasy_tracker import create_league_conn, create_draft_df, create_teams_df
 
