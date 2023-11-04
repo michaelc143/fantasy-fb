@@ -1,3 +1,6 @@
+'''
+Main python file used to connect to fantasy football league and pull stats
+'''
 from espn_api.football import League
 import pandas as pd
 import os
