@@ -62,11 +62,3 @@ def create_draft_df(league):
     teams['Team_Names'] = team_names
     teams['Draft_Picks'] = [draft_picks.get(team, []) for team in teams['Team_Names']]
     return teams
-
-    
-league = create_league_conn()
-# teams = create_teams_df(league)
-draft = create_draft_df(league)
-print(draft)
-# print(teams)
-# print(league.teams)
