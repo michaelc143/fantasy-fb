@@ -1,4 +1,4 @@
-# Fantasy Football Python Project Readme
+# Fantasy Football Python Project
 
 ## Introduction
 
@@ -6,7 +6,8 @@ Welcome to the Fantasy Football Python Project! This project is designed to help
 
 ## Features
 
-* **Statistical Analysis** COMING SOON
+* **Statistical Analysis** 
+    * COMING SOON
 
 ## Getting Started
 
