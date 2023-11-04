@@ -21,4 +21,4 @@ To get started with the Fantasy Football Python Project, follow these steps:
 pip install -r requirements.txt
 ```
 
-You must also set your epsn2 and swid in a similar .env file. The python file pulls from the .env fil to find league specific data.
+You must also set your leagueid, epsn2, and swid in a similar .env file. The python file pulls from the .env fil to find league specific data.
