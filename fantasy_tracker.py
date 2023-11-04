@@ -26,23 +26,33 @@ def create_teams_df(league):
     schedules = []
     standings = []
     best_players = []
+    roster_df = []
     for team in league.teams:
         team_names.append(team.team_name)
         division_names.append(team.division_name)
         rosters.append(team.roster)
         schedules.append(team.schedule)
         standings.append(int(team.standing))
+    final_team_names = []
+    for team_name in team_names:
+        under_name = team_name.replace(" ", "_")
+        final_team_names.append(under_name.lower())
     for roster in rosters:
-        best_player = roster[0]
+        # best_player = roster[0]
+        # for player in roster:
+        #     if player.total_points > best_player.total_points:
+        #         best_player = player
+        # best_players.append(best_player)
+        temp_roster = []
         for player in roster:
-            if player.total_points > best_player.total_points:
-                best_player = player
-        best_players.append(best_player)
+            temp_roster.append(player.name)
+        roster_df.append(temp_roster)
     teams = pd.DataFrame()
-    teams['Team_Names'] = team_names
+    teams['Team_Names'] = final_team_names
     teams['Division'] = division_names
     # teams['Schedule'] = schedules
     teams['Ranking'] = standings
+    teams['Roster'] = roster_df
     teams = teams.sort_values(by='Ranking')
     return teams
 
@@ -76,8 +86,3 @@ def create_draft_df(league):
     teams['Best_Player'] = best_players
     teams['Impact_Player'] = impact_players
     return teams
-
-if __name__ == '__main__':
-    league = create_league_conn()
-    draft = create_draft_df(league)
-    print(draft)
