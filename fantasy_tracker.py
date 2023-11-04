@@ -49,8 +49,22 @@ def create_teams_df(league):
 def create_draft_df(league):
     team_names = []
     draft_picks = {}
+    rosters = []
+    best_players = []
+    impact_players = []
     for team in league.teams:
         team_names.append(team.team_name)
+        rosters.append(team.roster)
+    for roster in rosters:
+        best_player = roster[0]
+        big_impact = roster[0]
+        for player in roster:
+            if player.avg_points > best_player.avg_points:
+                best_player = player
+            if (player.avg_points - player.projected_avg_points) > (big_impact.avg_points - big_impact.projected_avg_points):
+                big_impact = player
+        best_players.append(("Name: " + best_player.name[:10], "Avg Points: " + str(best_player.avg_points)))
+        impact_players.append(("Name: " + big_impact.name[:10], "Pt Differential: " + str(int(big_impact.avg_points - big_impact.projected_avg_points))))
     for team in team_names:
         draft_picks[team] = []
     draft = league.draft
@@ -59,4 +73,11 @@ def create_draft_df(league):
     teams = pd.DataFrame()
     teams['Team_Names'] = team_names
     teams['Draft_Picks'] = [draft_picks.get(team, []) for team in teams['Team_Names']]
+    teams['Best_Player'] = best_players
+    teams['Impact_Player'] = impact_players
     return teams
+
+if __name__ == '__main__':
+    league = create_league_conn()
+    draft = create_draft_df(league)
+    print(draft)
